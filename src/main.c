@@ -6,13 +6,13 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:03:28 by mario             #+#    #+#             */
-/*   Updated: 2025/02/25 01:56:22 by mario            ###   ########.fr       */
+/*   Updated: 2025/02/25 19:15:25 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int main(void)
-{
-    return (0);
-}
+// int main(void)
+// {
+//     return (0);
+// }

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdodevsk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:13:20 by mdodevsk          #+#    #+#             */
-/*   Updated: 2025/01/12 14:28:21 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:16:16 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack_node	*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
-	t_stack_node	*new;
+	t_list	*new;
 
-	new = malloc(sizeof(t_stack_node));
+	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
 	new->content = content;

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdodevsk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:30:01 by mdodevsk          #+#    #+#             */
-/*   Updated: 2025/01/12 14:28:21 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:49:25 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack_node	*ft_lstlast(t_stack_node *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_stack_node	*tmp;
+	t_list	*tmp;
 
 	if (!lst)
 		return (NULL);

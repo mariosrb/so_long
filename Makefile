@@ -10,8 +10,8 @@ SRCS =  ./src/main.c \
         ./src/graphics/graphics_init.c \
         ./src/graphics/graphics_utils.c \
         ./src/graphics/graphics_render.c \
-        ./src/map/load_map.c \
-        ./src/map/map_utils.c \
+        ./src/map/map_load.c \
+        ./src/map/map_validate.c \
         ./src/map/map_render.c \
         ./src/player/player_collect.c \
         ./src/player/player_move.c \

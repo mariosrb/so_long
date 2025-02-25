@@ -19,20 +19,12 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <string.h>
-# include <stdbool.h>
 
-typedef struct s_stack_node
+typedef struct s_list
 {
-	void				*content;
-	int					cost;
-	int					index;
-	bool				median;
-	bool				cheap;
-
-	struct s_stack_node	*next;
-	struct s_stack_node	*prev;
-	struct s_stack_node	*target;
-}	t_stack_node;
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
@@ -64,7 +56,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
-void	ft_lstiter(t_stack_node *lst, void (*f)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_bzero(void *s, size_t n);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
@@ -91,10 +83,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(const char *s1, const char *set);
-void	ft_lstadd_front(t_stack_node **lst, t_stack_node *new);
-void	ft_lstadd_back(t_stack_node **lst, t_stack_node *new);
-void	ft_lstdelone(t_stack_node *lst, void (*del)(void *));
-void	ft_lstclear(t_stack_node **lst, void (*del)(void *));
-int		ft_lstsize(t_stack_node *lst);
+t_list	*ft_lstnew(void	*content);
+t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+int		ft_lstsize(t_list *lst);
 
 #endif

@@ -6,15 +6,15 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:16:07 by mdodevsk          #+#    #+#             */
-/*   Updated: 2025/01/12 14:28:21 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:08:26 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_stack_node **lst, t_stack_node *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_stack_node	*tmp;
+	t_list	*tmp;
 
 	tmp = *lst;
 	tmp = ft_lstlast(*lst);

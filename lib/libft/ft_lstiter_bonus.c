@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 23:03:28 by mario             #+#    #+#             */
-/*   Updated: 2025/02/24 23:03:42 by mario            ###   ########.fr       */
+/*   Created: 2024/11/12 10:36:44 by mdodevsk          #+#    #+#             */
+/*   Updated: 2025/01/12 14:28:21 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_lstiter(t_stack_node *lst, void (*f)(void *))
 {
-    return (0);
+	t_stack_node	*tmp;
+
+	tmp = lst;
+	while (tmp != NULL)
+	{
+		f(tmp->content);
+		tmp = tmp->next;
+	}
 }

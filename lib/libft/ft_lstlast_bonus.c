@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 23:03:28 by mario             #+#    #+#             */
-/*   Updated: 2025/02/24 23:03:42 by mario            ###   ########.fr       */
+/*   Created: 2024/11/11 16:30:01 by mdodevsk          #+#    #+#             */
+/*   Updated: 2025/01/12 14:28:21 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+t_stack_node	*ft_lstlast(t_stack_node *lst)
 {
-    return (0);
+	t_stack_node	*tmp;
+
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	return (tmp);
 }

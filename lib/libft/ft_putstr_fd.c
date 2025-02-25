@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 23:03:28 by mario             #+#    #+#             */
-/*   Updated: 2025/02/24 23:03:42 by mario            ###   ########.fr       */
+/*   Created: 2024/11/08 14:20:03 by mdodevsk          #+#    #+#             */
+/*   Updated: 2024/11/08 14:33:27 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-    return (0);
+	while (*s && fd >= 0)
+	{
+		write(fd, &*s, 1);
+		s++;
+	}
 }

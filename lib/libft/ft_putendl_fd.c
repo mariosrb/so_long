@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 23:03:28 by mario             #+#    #+#             */
-/*   Updated: 2025/02/24 23:03:42 by mario            ###   ########.fr       */
+/*   Created: 2024/11/08 14:23:09 by mdodevsk          #+#    #+#             */
+/*   Updated: 2024/11/08 14:34:05 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_putendl_fd(char *s, int fd)
 {
-    return (0);
+	while (*s && fd >= 0)
+	{
+		write (fd, &*s, 1);
+		s++;
+	}
+	write (fd, "\n", 1);
 }

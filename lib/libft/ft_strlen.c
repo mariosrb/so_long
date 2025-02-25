@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 23:03:28 by mario             #+#    #+#             */
-/*   Updated: 2025/02/24 23:03:42 by mario            ###   ########.fr       */
+/*   Created: 2024/09/20 11:34:32 by mdodevsk          #+#    #+#             */
+/*   Updated: 2024/10/25 19:04:34 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+size_t	ft_strlen(const char *str)
 {
-    return (0);
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
+/*
+int	main()
+{
+	char	chaine[] = "Salut";
+	ft_strlen(chaine);
+	return (0);
+}*/

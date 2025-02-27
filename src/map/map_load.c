@@ -6,17 +6,18 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:41 by mario             #+#    #+#             */
-/*   Updated: 2025/02/27 17:16:54 by mario            ###   ########.fr       */
+/*   Updated: 2025/02/27 23:48:53 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-// On verifie si le fichier est bien en .ber
 static int	check_file_extension(char *file)
 {
     char    *dot;
 
+	if (!file)
+		return (0);
     dot = ft_strrchr(file, '.');
     if (!dot)
         return (0);

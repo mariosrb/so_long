@@ -6,11 +6,11 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:11:02 by mario             #+#    #+#             */
-/*   Updated: 2025/02/27 17:38:21 by mario            ###   ########.fr       */
+/*   Updated: 2025/02/27 19:02:41 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/utils.h"
+#include "../../include/so_long.h"
 
 void	free_char_tab(char **tab)
 {

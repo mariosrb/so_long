@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:44 by mario             #+#    #+#             */
-/*   Updated: 2025/02/27 17:00:04 by mario            ###   ########.fr       */
+/*   Updated: 2025/02/27 22:50:12 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ void	print_map_error(int error_code)
 	else if (error_code == ERR_NO_WALLS)
 		ft_putstr_fd("Error\nMap must be surrounded by walls\n", 2);
 	else if (error_code == ERR_MAP_TOO_SMALL)
-		ft_putstr_fd("Error\nMap must be at least 3x3\n", 2);
-	else if (error_code == ERR_NOT_RECTANGLE)
 		ft_putstr_fd("Error\nMap must be rectangular\n", 2);
+	else if (error_code == ERR_MEMORY)
+		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
+	else if (error_code == ERR_NO_PATH)
+		ft_putstr_fd("Error\nMap has no valid path\n", 2);
 }
 
 void	count_elements(t_map *map, int *p, int *e, int *c)
@@ -79,6 +81,6 @@ int	validate_count(int p, int e, int c)
         return (print_map_error(ERR_MULTI_EXIT), ERR_MULTI_EXIT);
     if (c == 0)
         return (print_map_error(ERR_NO_COLLECT), ERR_NO_COLLECT);
-    return (MAP_OK);
+    return (1);
 }
 

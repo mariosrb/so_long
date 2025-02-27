@@ -14,6 +14,7 @@ SRCS =  ./src/main.c \
         ./src/map/map_validate.c \
         ./src/map/map_render.c \
         ./src/map/map_validate_utils.c \
+        ./src/map/map_path.c \
         ./src/player/player_collect.c \
         ./src/player/player_move.c \
         ./src/utils/error_handling.c \

@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:44 by mario             #+#    #+#             */
-/*   Updated: 2025/02/27 17:16:24 by mario            ###   ########.fr       */
+/*   Updated: 2025/02/27 20:21:56 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ int	validate_map(t_map *map)
 		return (ERR_NO_WALLS);
 	if (!check_elements(map))
 		return (ERR_INVALID_CHAR);
+	if (!check_path(map))
+		return (ERR_NO_PATH);
 	return (MAP_OK);
 }

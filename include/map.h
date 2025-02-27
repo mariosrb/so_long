@@ -13,7 +13,7 @@
 # define ERR_NO_WALLS       8
 # define ERR_MAP_TOO_SMALL  9
 # define ERR_NO_PATH        10
-# define ERR_NO_PATH_COLL   11  
+# define ERR_MEMORY         11
 
 typedef struct s_map
 {
@@ -37,5 +37,6 @@ void	count_elements(t_map *map, int *p, int *e, int *c);
 int	check_elements(t_map *map);
 size_t	get_line_width(char *line);
 int		validate_map(t_map *map);
+int check_path(t_map *map);
 
 #endif

@@ -1,6 +1,6 @@
 NAME = so_long
 
-CC = gcc
+CC = gcc -g3
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS =  ./src/main.c \
@@ -13,6 +13,7 @@ SRCS =  ./src/main.c \
         ./src/map/map_load.c \
         ./src/map/map_validate.c \
         ./src/map/map_render.c \
+        ./src/map/map_validate_utils.c \
         ./src/player/player_collect.c \
         ./src/player/player_move.c \
         ./src/utils/error_handling.c \

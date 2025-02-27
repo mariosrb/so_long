@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:41 by mario             #+#    #+#             */
-/*   Updated: 2025/02/25 22:32:35 by mario            ###   ########.fr       */
+/*   Updated: 2025/02/27 17:16:54 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,18 @@ static int	count_line(char *file)
 	return (count_line);
 }
 
+size_t get_line_width(char *line)
+{
+	size_t len;
+
+	if (!line)
+		return (0);
+	len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+		return (len - 1);
+	return (len);
+}
+
 int	map_load(t_map *map, char *map_path)
 {
 	int		fd;
@@ -67,7 +79,7 @@ int	map_load(t_map *map, char *map_path)
 	{
 		map->map[i] = line;
 		if (i == 0)
-			map->width = ft_strlen(line);
+			map->width = get_line_width(line);
 		i++;
 	}
 	map->map[i] = NULL;
@@ -93,14 +105,3 @@ void    print_char_tab(char **tab)
     }
 }
 
-// int main (int ac, char **av)
-// {
-// 	t_map map;
-//     (void)ac;
-// 	printf("%d\n", check_file_extension(av[1]));
-// 	printf("le nombre de ligne : %d\n", count_line(av[1]));
-// 	map_load(&map, av[1]);
-// 	print_char_tab(map.map);
-// 	free_char_tab(map.map);
-//     return (0);
-// }

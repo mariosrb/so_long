@@ -3,7 +3,9 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <stddef.h>
 # include <unistd.h>
+# include <string.h>
 # include <fcntl.h>
 
 # include "../lib/libft/libft.h"
@@ -13,10 +15,11 @@
 # include "graphics.h"
 # include "utils.h"
 
+
 // Map
 int	map_load(t_map *map, char *map_path);
 
 // Memory management
-void	free_char_tab(char **tab);
+
 
 #endif

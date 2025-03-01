@@ -20,6 +20,8 @@ typedef struct s_map // Structure pour la map
     int     width;
     int     height;
     char    **map;
+    int     player_x;
+    int     player_y;
 }   t_map;
 
 typedef struct s_pos // Structure pour la position

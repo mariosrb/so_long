@@ -14,6 +14,7 @@
 # include "player.h"
 # include "graphics.h"
 # include "utils.h"
+# include "../lib/mlx/minilibx-linux/mlx.h"
 
 
 // Map

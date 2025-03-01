@@ -15,14 +15,14 @@
 # define ERR_NO_PATH        10
 # define ERR_MEMORY         11
 
-typedef struct s_map
+typedef struct s_map // Structure pour la map
 {
     int     width;
     int     height;
     char    **map;
 }   t_map;
 
-typedef struct s_pos
+typedef struct s_pos // Structure pour la position
 {
     int     x;
     int     y;

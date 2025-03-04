@@ -7,6 +7,8 @@ typedef struct s_game
     int         collectibles_count;
     int         collectibles_total;
     int         is_exit_reached;
+    t_map       *map;
+    t_graphics  *graphics;
 }   t_game;
 
 

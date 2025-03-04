@@ -40,5 +40,6 @@ int	check_elements(t_map *map);
 size_t	get_line_width(char *line);
 int		validate_map(t_map *map);
 int check_path(t_map *map);
+int render_map(t_graphics *graphics, t_map *map);
 
 #endif

@@ -1,6 +1,8 @@
 #ifndef MAP_H
 # define MAP_H
 
+typedef struct s_graphics t_graphics;
+
 /* Map Error Codes */
 # define MAP_OK             0
 # define ERR_NO_PLAYER      1

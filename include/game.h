@@ -11,5 +11,6 @@ typedef struct s_game
     t_graphics  *graphics;
 }   t_game;
 
+t_game *init_game(char *map_path);
 
 #endif

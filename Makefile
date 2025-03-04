@@ -6,7 +6,6 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS =  ./src/main.c \
         ./src/game/game_init.c \
         ./src/game/game_loop.c \
-        ./src/game/game_utils.c \
         ./src/graphics/graphics_init.c \
         ./src/graphics/graphics_utils.c \
         ./src/graphics/graphics_render.c \

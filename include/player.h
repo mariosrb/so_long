@@ -18,4 +18,9 @@ typedef struct s_player
     int moves;
 }   t_player;
 
+typedef struct s_game t_game;
+
+int key_handler(int keycode, t_game *game);
+void move_player(t_game *game, int dx, int dy);
+
 #endif

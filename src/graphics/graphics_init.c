@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:09:59 by mario             #+#    #+#             */
-/*   Updated: 2025/03/01 17:45:19 by mario            ###   ########.fr       */
+/*   Updated: 2025/03/03 11:13:46 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,31 +94,31 @@ int graphics_init(t_graphics *graphics, t_map *map)
     return (1);
 }
 
-int main(void)
-{
-    t_graphics  *graphics;
-    t_map       map;
+// int main(void)
+// {
+//     t_graphics  *graphics;
+//     t_map       map;
     
-    graphics = malloc(sizeof(t_graphics));
-    if (!graphics)
-        return (0);
-    init_graphics_struct(graphics);
+//     graphics = malloc(sizeof(t_graphics));
+//     if (!graphics)
+//         return (0);
+//     init_graphics_struct(graphics);
 
-    map.height = 5;
-    map.width = 10;
+//     map.height = 5;
+//     map.width = 10;
     
-    printf("Test chargement des textures...\n");
-    if (!graphics_init(graphics, &map))
-    {
-        printf("ERROR loading textures\n");
-        graphics_destroy(graphics);
-        return (0);
-    }
-    printf("Textures chargees avec succes !\n");
-    mlx_put_image_to_window(graphics->mlx, graphics->window, 
-        graphics->textures.exit, 10, 10);
+//     printf("Test chargement des textures...\n");
+//     if (!graphics_init(graphics, &map))
+//     {
+//         printf("ERROR loading textures\n");
+//         graphics_destroy(graphics);
+//         return (0);
+//     }
+//     printf("Textures chargees avec succes !\n");
+//     mlx_put_image_to_window(graphics->mlx, graphics->window, 
+//         graphics->textures.exit, 10, 10);
     
-    sleep(3);
-    graphics_destroy(graphics);
-    return (1);
-}
+//     sleep(3);
+//     graphics_destroy(graphics);
+//     return (1);
+// }

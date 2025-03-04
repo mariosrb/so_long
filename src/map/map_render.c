@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:59 by mario             #+#    #+#             */
-/*   Updated: 2025/03/01 23:17:08 by mario            ###   ########.fr       */
+/*   Updated: 2025/03/04 11:47:38 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static void render_tile(t_graphics *graphics, int row, int col, char tile_type)
     mlx_put_image_to_window(graphics->mlx, graphics->window, img, x, y);
 }
 
-int render_map(t_graphics *graphics, t_map *map, t_player *player)
+int render_map(t_graphics *graphics, t_map *map)
 {
     int row;
     int col;
 
-    if (!graphics || !map || !map->map || !player)
+    if (!graphics || !map || !map->map)
         return (0);
     row = 0;
     while (row < map->height)
@@ -49,11 +49,6 @@ int render_map(t_graphics *graphics, t_map *map, t_player *player)
         col = 0;
         while (col < map->width)
         {
-            if (map->map[row][col] == 'P')
-            {
-                player->x = col;
-                player->y = row;
-            }
             render_tile(graphics, row, col, map->map[row][col]);
             col++;
         }

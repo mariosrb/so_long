@@ -19,7 +19,7 @@
 
 // Map
 int	map_load(t_map *map, char *map_path);
-
+//dwdw
 // Memory management
 
 

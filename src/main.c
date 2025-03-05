@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:03:28 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 14:35:17 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:33:47 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	main(int ac, char **av)
 		ft_putstr_fd("Error\nUsage: ./so_long [map_file.ber]\n", 2);
 		return (1);
 	}
-	// if (!validate_map(av[1]))
-	// 	return (1);
 	game = init_game(av[1]);
 	if (!game)
 		return (1);

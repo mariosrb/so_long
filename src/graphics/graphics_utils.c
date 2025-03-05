@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:10:24 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 11:45:37 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:09:07 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,35 +32,17 @@ void	graphics_destroy(t_graphics *graphics)
 	if (graphics->mlx)
 	{
 		if (graphics->textures.player)
-		{
 			mlx_destroy_image(graphics->mlx, graphics->textures.player);
-			graphics->textures.player = NULL;
-		}
 		if (graphics->textures.exit)
-		{
 			mlx_destroy_image(graphics->mlx, graphics->textures.exit);
-			graphics->textures.exit = NULL;
-		}
 		if (graphics->textures.collect)
-		{
 			mlx_destroy_image(graphics->mlx, graphics->textures.collect);
-			graphics->textures.collect = NULL;
-		}
 		if (graphics->textures.floor)
-		{
 			mlx_destroy_image(graphics->mlx, graphics->textures.floor);
-			graphics->textures.floor = NULL;
-		}
 		if (graphics->textures.wall)
-		{
 			mlx_destroy_image(graphics->mlx, graphics->textures.wall);
-			graphics->textures.wall = NULL;
-		}
 		if (graphics->window)
-		{
 			mlx_destroy_window(graphics->mlx, graphics->window);
-			graphics->window = NULL;
-		}
 		mlx_destroy_display(graphics->mlx);
 		free(graphics->mlx);
 		graphics->mlx = NULL;

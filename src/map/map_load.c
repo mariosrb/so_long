@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:41 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 12:00:38 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:07:33 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,30 @@ size_t	get_line_width(char *line)
 	return (len);
 }
 
+static	int	handle_map_error(t_map *map, char *map_path)
+{
+	if (!check_file_extension(map_path))
+		return (ft_putstr_fd("Error\nInvalid file extension. Must be .ber", 2)
+			, 0);
+	map->height = count_line(map_path);
+	if (map->height <= 0)
+		return (ft_putstr_fd("Error\nMemory allocation failed", 2), 0);
+	map->map = malloc(sizeof(char *) * (map->height + 1));
+	if (!map->map)
+		return (ft_putstr_fd("Error\nMemory allocation failed", 2), 0);
+	return (1);
+}
+
 int	map_load(t_map *map, char *map_path)
 {
 	int		fd;
 	int		i;
 	char	*line;
 
-	if (!check_file_extension(map_path))
-		return (ft_putstr_fd("Error\nInvalid file extension. Must be .ber", 2),
-			0);
-	map->height = count_line(map_path);
-	if (map->height <= 0)
-		return (ft_putstr_fd("Error\nInvalid or empty map file", 2), 0);
-	map->map = malloc(sizeof(char *) * (map->height + 1));
-	if (!map->map)
-		return (ft_putstr_fd("Error\nMemory allocation failed", 2), 0);
-	if ((fd = open(map_path, O_RDONLY)) < 0)
+	if (!handle_map_error(map, map_path))
+		return (0);
+	fd = open(map_path, O_RDONLY);
+	if (fd < 0)
 		return (ft_putstr_fd("Error\nFailed to open map file", 2), 0);
 	i = 0;
 	line = get_next_line(fd);
@@ -91,22 +99,4 @@ int	map_load(t_map *map, char *map_path)
 	map->map[i] = NULL;
 	close(fd);
 	return (1);
-}
-
-void	print_char_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	if (!tab)
-	{
-		ft_putstr_fd("Error: NULL pointer\n", 2);
-		return ;
-	}
-	while (tab[i])
-	{
-		ft_putstr_fd(tab[i], 1);
-		ft_putchar_fd('\n', 1);
-		i++;
-	}
 }

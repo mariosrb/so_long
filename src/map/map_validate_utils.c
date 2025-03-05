@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:44 by mario             #+#    #+#             */
-/*   Updated: 2025/02/27 22:50:12 by mario            ###   ########.fr       */
+/*   Updated: 2025/03/05 11:36:05 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	is_valid_char(char c)
 void	print_map_error(int error_code)
 {
 	if (error_code == ERR_NO_PLAYER)
-		ft_putstr_fd("Error\nMap must have exactly one starting point (P)\n", 2);
+		ft_putstr_fd("Error\nMap must have exactly one starting point (P)\n",
+			2);
 	else if (error_code == ERR_MULTI_PLAYER)
 		ft_putstr_fd("Error\nMap has multiple starting points\n", 2);
 	else if (error_code == ERR_NO_EXIT)
@@ -46,8 +47,8 @@ void	print_map_error(int error_code)
 void	count_elements(t_map *map, int *p, int *e, int *c)
 {
 	int	i;
-	int j;
-	
+	int	j;
+
 	i = 0;
 	*p = 0;
 	*e = 0;
@@ -72,15 +73,14 @@ void	count_elements(t_map *map, int *p, int *e, int *c)
 int	validate_count(int p, int e, int c)
 {
 	if (p == 0)
-        return (print_map_error(ERR_NO_PLAYER), ERR_NO_PLAYER);
-    if (p > 1)
-        return (print_map_error(ERR_MULTI_PLAYER), ERR_MULTI_PLAYER);
-    if (e == 0)
-        return (print_map_error(ERR_NO_EXIT), ERR_NO_EXIT);
-    if (e > 1)
-        return (print_map_error(ERR_MULTI_EXIT), ERR_MULTI_EXIT);
-    if (c == 0)
-        return (print_map_error(ERR_NO_COLLECT), ERR_NO_COLLECT);
-    return (1);
+		return (print_map_error(ERR_NO_PLAYER), ERR_NO_PLAYER);
+	if (p > 1)
+		return (print_map_error(ERR_MULTI_PLAYER), ERR_MULTI_PLAYER);
+	if (e == 0)
+		return (print_map_error(ERR_NO_EXIT), ERR_NO_EXIT);
+	if (e > 1)
+		return (print_map_error(ERR_MULTI_EXIT), ERR_MULTI_EXIT);
+	if (c == 0)
+		return (print_map_error(ERR_NO_COLLECT), ERR_NO_COLLECT);
+	return (1);
 }
-

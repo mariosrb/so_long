@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
+#    By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 18:37:01 by mdodevsk          #+#    #+#              #
-#    Updated: 2025/02/25 01:53:05 by mario            ###   ########.fr        #
+#    Updated: 2025/03/05 10:51:01 by mdodevsk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc 
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIC -fPIE
 
 SRC = ./ft_atoi.c ./ft_bzero.c ./ft_calloc.c \
       ./ft_isalnum.c ./ft_isalpha.c ./ft_isascii.c \

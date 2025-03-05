@@ -9,7 +9,7 @@
 # include <fcntl.h>
 
 # include "../lib/libft/libft.h"
-# include "../lib/mlx/minilibx-linux/mlx.h"
+# include "../lib/minilibx-linux/mlx.h"
 
 # include "player.h"
 # include "map.h"
@@ -19,8 +19,5 @@
 
 // Map
 int	map_load(t_map *map, char *map_path);
-//dwdw
-// Memory management
-
 
 #endif

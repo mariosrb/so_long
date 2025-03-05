@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:44 by mario             #+#    #+#             */
-/*   Updated: 2025/02/27 20:21:56 by mario            ###   ########.fr       */
+/*   Updated: 2025/03/05 11:44:55 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static int	check_walls(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			if ((i == 0 || i == map->height - 1 ) || (j == 0 || j == map->width - 1))
+			if ((i == 0 || i == map->height - 1) || (j == 0 || j == map->width
+					- 1))
 			{
 				if (map->map[i][j] != '1')
 					return (0);
@@ -59,7 +60,7 @@ int	check_elements(t_map *map)
 {
 	int	p_count;
 	int	e_count;
-	int c_count;
+	int	c_count;
 	int	i;
 	int	j;
 

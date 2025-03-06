@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:22:56 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 11:46:26 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:31:37 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,12 @@ static int	check_reachable(char **filled_map, t_map *map)
 		while (j < map->width)
 		{
 			if (map->map[i][j] == 'C' && filled_map[i][j] != 'F')
-				return (print_map_error(ERR_NO_PATH), 0);
+				return (ERR_NO_PATH);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	check_path(t_map *map)
@@ -105,12 +105,12 @@ int	check_path(t_map *map)
 
 	map_copy = copy_map(map);
 	if (!map_copy)
-		return (print_map_error(ERR_MEMORY), 0);
+		return (ERR_MEMORY);
 	player = find_player(map);
 	if (player.x == -1 || player.y == -1)
 	{
 		free_char_tab(map_copy);
-		return (print_map_error(ERR_NO_PLAYER), 0);
+		return (ERR_NO_PLAYER);
 	}
 	flood_fill(map_copy, player.x, player.y, map);
 	result = check_reachable(map_copy, map);

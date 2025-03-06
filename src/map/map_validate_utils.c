@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:44 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 11:36:05 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:06:52 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ void	count_elements(t_map *map, int *p, int *e, int *c)
 int	validate_count(int p, int e, int c)
 {
 	if (p == 0)
-		return (print_map_error(ERR_NO_PLAYER), ERR_NO_PLAYER);
+		return (ERR_NO_PLAYER);
 	if (p > 1)
-		return (print_map_error(ERR_MULTI_PLAYER), ERR_MULTI_PLAYER);
+		return (ERR_MULTI_PLAYER);
 	if (e == 0)
-		return (print_map_error(ERR_NO_EXIT), ERR_NO_EXIT);
+		return (ERR_NO_EXIT);
 	if (e > 1)
-		return (print_map_error(ERR_MULTI_EXIT), ERR_MULTI_EXIT);
+		return (ERR_MULTI_EXIT);
 	if (c == 0)
-		return (print_map_error(ERR_NO_COLLECT), ERR_NO_COLLECT);
-	return (1);
+		return (ERR_NO_COLLECT);
+	return (0);
 }

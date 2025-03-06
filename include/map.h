@@ -26,7 +26,7 @@ typedef struct s_map
 	int						player_y;
 }							t_map;
 
-typedef struct s_pos // Structure pour la position
+typedef struct s_pos
 {
 	int x;
 	int y;

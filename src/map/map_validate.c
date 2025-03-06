@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:44 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 18:19:35 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:25:27 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ static int	check_rectangle(t_map *map)
 	int	len;
 
 	if (map->height < 3 || map->width < 3)
-		return (print_map_error(ERR_MAP_TOO_SMALL), 0);
+		return (ERR_MAP_TOO_SMALL);
 	i = 0;
 	while (i < map->height)
 	{
 		len = get_line_width(map->map[i]);
 		if (len != map->width)
-			return (print_map_error(ERR_NOT_RECTANGLE), 0);
+			return (ERR_NOT_RECTANGLE);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 static int	check_walls(t_map *map)
@@ -47,13 +47,13 @@ static int	check_walls(t_map *map)
 					- 1))
 			{
 				if (map->map[i][j] != '1')
-					return (0);
+					return (ERR_NO_WALLS);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int	check_elements(t_map *map)
@@ -71,7 +71,7 @@ int	check_elements(t_map *map)
 		while (j < map->width)
 		{
 			if (!is_valid_char(map->map[i][j]))
-				return (print_map_error(ERR_INVALID_CHAR), ERR_INVALID_CHAR);
+				return (ERR_INVALID_CHAR);
 			j++;
 		}
 		i++;
@@ -82,25 +82,19 @@ int	check_elements(t_map *map)
 
 int	validate_map(t_map *map)
 {
-	if (!check_rectangle(map))
-	{
-		print_map_error(ERR_NOT_RECTANGLE);
-		return (ERR_NOT_RECTANGLE);
-	}
-	if (!check_walls(map))
-	{
-		print_map_error(ERR_NO_WALLS);
-		return (ERR_NO_WALLS);
-	}
-	if (!check_elements(map))
-	{
-		print_map_error(ERR_INVALID_CHAR);
-		return (ERR_INVALID_CHAR);
-	}
-	if (!check_path(map))
-	{
-		print_map_error(ERR_NO_PATH);
-		return (ERR_NO_PATH);
-	}
+	int	error_code;
+
+	error_code = check_rectangle(map);
+	if (error_code != MAP_OK)
+		return (print_map_error(error_code), error_code);
+	error_code = check_walls(map);
+	if (error_code != MAP_OK)
+		return (print_map_error(error_code), error_code);
+	error_code = check_elements(map);
+	if (error_code != MAP_OK)
+		return (print_map_error(error_code), error_code);
+	error_code = check_path(map);
+	if (error_code != MAP_OK)
+		return (print_map_error(error_code), error_code);
 	return (MAP_OK);
 }

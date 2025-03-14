@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:03:28 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 17:33:47 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:53:31 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	setup_hooks(t_game *game)
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	//t_map	map;
 
 	if (ac != 2)
 	{

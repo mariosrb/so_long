@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validate_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:44 by mario             #+#    #+#             */
-/*   Updated: 2025/03/14 12:01:23 by mario            ###   ########.fr       */
+/*   Updated: 2025/03/14 15:22:50 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_map_error(int error_code)
 	else if (error_code == ERR_NO_WALLS)
 		ft_putstr_fd("Error\nMap must be surrounded by walls\n", 2);
 	else if (error_code == ERR_MAP_TOO_SMALL)
-		ft_putstr_fd("Error\nMap must be rectangular\n", 2);
+		ft_putstr_fd("Error\nMap is too small\n", 2);
 	else if (error_code == ERR_MEMORY)
 		ft_putstr_fd("Error\nMemory allocation failed\n", 2);
 	else if (error_code == ERR_NO_PATH)
@@ -85,12 +85,11 @@ int	validate_count(int p, int e, int c)
 	return (0);
 }
 
-// Cette fonction vérifie si la sortie est accessible (adjacente à une case inondée)
-static int check_exit_reachable(char **filled_map, t_map *map)
+int	check_exit_reachable(char **filled_map, t_map *map)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	while (i < map->height)
 	{
@@ -99,17 +98,16 @@ static int check_exit_reachable(char **filled_map, t_map *map)
 		{
 			if (map->map[i][j] == 'E')
 			{
-				// Vérifier les 4 cases adjacentes
-				if ((i > 0 && filled_map[i-1][j] == 'F') ||
-					(i < map->height - 1 && filled_map[i+1][j] == 'F') ||
-					(j > 0 && filled_map[i][j-1] == 'F') ||
-					(j < map->width - 1 && filled_map[i][j+1] == 'F'))
-					return (1); // Sortie accessible
-				return (0); // Sortie non accessible
+				if ((i > 0 && filled_map[i - 1][j] == 'F') || (i < map->height
+						- 1 && filled_map[i + 1][j] == 'F') || (j > 0
+						&& filled_map[i][j - 1] == 'F') || (j < map->width - 1
+						&& filled_map[i][j + 1] == 'F'))
+					return (1);
+				return (0);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (0); // Sortie non trouvée (ne devrait jamais arriver)
+	return (0);
 }

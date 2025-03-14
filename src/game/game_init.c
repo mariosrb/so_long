@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:04:50 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 18:14:11 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:37:36 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,71 +67,48 @@ t_game	*init_game(char *map_path)
 {
 	t_game	*game;
 
-	//printf("Starting game initialization...\n");
-	
-	// Allocation de la structure principale
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		return (NULL);
-		
-	//printf("Allocating map structure...\n");
-	// Allocation de la structure de carte
 	game->map = (t_map *)malloc(sizeof(t_map));
 	if (!game->map)
 	{
 		free(game);
 		return (NULL);
 	}
-	
-	//printf("Loading map from %s...\n", map_path);
-	// Chargement de la carte
 	if (!map_load(game->map, map_path))
 	{
-		//printf("Map loading failed!\n");
 		free(game->map);
 		free(game);
 		return (NULL);
 	}
-	
-	//printf("Validating map...\n");
-	// Validation de la carte
 	if (validate_map(game->map) != MAP_OK)
 	{
-		//printf("Map validation failed!\n");
 		free_char_tab(game->map->map);
 		free(game->map);
 		free(game);
 		return (NULL);
 	}
-	
-	//printf("Initializing graphics...\n");
-	// Initialisation des graphismes
 	game->graphics = (t_graphics *)malloc(sizeof(t_graphics));
 	if (!game->graphics)
 	{
-		//printf("Graphics allocation failed!\n");
 		free_char_tab(game->map->map);
 		free(game->map);
 		free(game);
 		return (NULL);
 	}
 	init_graphics_struct(game->graphics);
-	//printf("Starting MLX initialization...\n");
 	if (!graphics_init(game->graphics, game->map))
 	{
-		//printf("Graphics initialization failed!\n");
 		free_char_tab(game->map->map);
 		free(game->map);
 		free(game->graphics);
 		free(game);
 		return (NULL);
 	}
-	//printf("Setting initial game state...\n");
-	// Configuration de l'état initial du jeu
 	game->player.moves = 0;
 	game->is_exit_reached = 0;
 	find_player_position(game);
 	count_collectibles(game);
-	//printf("Game initialization complete!\n");
 	return (game);
 }

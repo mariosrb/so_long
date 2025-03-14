@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:44 by mario             #+#    #+#             */
-/*   Updated: 2025/03/06 12:25:27 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:52:52 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_rectangle(t_map *map)
 			return (ERR_NOT_RECTANGLE);
 		i++;
 	}
-	return (0);
+	return (MAP_OK);
 }
 
 static int	check_walls(t_map *map)
@@ -53,7 +53,7 @@ static int	check_walls(t_map *map)
 		}
 		i++;
 	}
-	return (0);
+	return (MAP_OK);
 }
 
 int	check_elements(t_map *map)

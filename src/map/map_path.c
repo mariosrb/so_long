@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:22:56 by mario             #+#    #+#             */
-/*   Updated: 2025/03/14 12:02:54 by mario            ###   ########.fr       */
+/*   Updated: 2025/03/14 13:16:17 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ static int	check_collectible_reachable(char **filled_map, t_map *map)
 
 int	check_path(t_map *map)
 {
-	char **map_copy;
-	t_pos player;
-	int collectibles_reachable;
-	int exit_reachable;
+	char	**map_copy;
+	t_pos	player;
+	int		collectibles_reachable;
+	int		exit_reachable;
 
 	map_copy = copy_map(map);
 	if (!map_copy)
@@ -113,15 +113,13 @@ int	check_path(t_map *map)
 		free_char_tab(map_copy);
 		return (ERR_NO_PLAYER);
 	}
-	// Première vérification: tous les collectibles sont accessibles
 	flood_fill(map_copy, player.x, player.y, map);
-	collectibles_reachable = check_collectibles_reachable(map_copy, map);
-	// Deuxième vérification: la sortie est accessible
+	collectibles_reachable = check_collectible_reachable(map_copy, map);
 	exit_reachable = check_exit_reachable(map_copy, map);
 	free_char_tab(map_copy);
-	if (!collectibles_reachable)
-		return (ERR_NO_PATH_TO_COLLECTIBLES); // Définir cette constante
+	if (collectibles_reachable != MAP_OK)
+		return (ERR_NO_PATH);
 	if (!exit_reachable)
-		return (ERR_NO_PATH_TO_EXIT); // Définir cette constante
+		return (ERR_NO_PATH);
 	return (MAP_OK);
 }

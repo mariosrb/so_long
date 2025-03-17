@@ -1,5 +1,5 @@
 NAME = so_long
-CC = gcc -g3
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS =  ./src/main.c \

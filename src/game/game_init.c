@@ -6,13 +6,13 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:04:50 by mario             #+#    #+#             */
-/*   Updated: 2025/03/14 14:37:36 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/17 12:11:22 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-static void	find_player_position(t_game *game)
+void	find_player_position(t_game *game)
 {
 	int	i;
 	int	j;
@@ -39,7 +39,7 @@ static void	find_player_position(t_game *game)
 	printf("WARNING: Player not found in map!\n");
 }
 
-static void	count_collectibles(t_game *game)
+void	count_collectibles(t_game *game)
 {
 	int	i;
 	int	j;
@@ -63,6 +63,30 @@ static void	count_collectibles(t_game *game)
 	printf("Found %d collectibles\n", game->collectibles_total);
 }
 
+static int	init_map(t_game *game, char *map_path)
+{
+	game->map = malloc(sizeof(t_map) * 1);
+	if (!game->map)
+		return (0);
+	if (!map_load(game->map, map_path))
+		return (0);
+	if (validate_map(game->map) != MAP_OK)
+		return (0);
+	return (1);
+}
+
+static void	cleanup_error(t_game *game, int stage)
+{
+	if (stage >= 2)
+		free(game->graphics);
+	if (stage >= 1)
+	{
+		free_char_tab(game->map->map);
+		free(game->map);
+	}
+	free(game);
+}
+
 t_game	*init_game(char *map_path)
 {
 	t_game	*game;
@@ -70,45 +94,24 @@ t_game	*init_game(char *map_path)
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		return (NULL);
-	game->map = (t_map *)malloc(sizeof(t_map));
-	if (!game->map)
+	if (!init_map(game, map_path))
 	{
-		free(game);
-		return (NULL);
-	}
-	if (!map_load(game->map, map_path))
-	{
-		free(game->map);
-		free(game);
-		return (NULL);
-	}
-	if (validate_map(game->map) != MAP_OK)
-	{
-		free_char_tab(game->map->map);
-		free(game->map);
-		free(game);
+		cleanup_error(game, 1);
 		return (NULL);
 	}
 	game->graphics = (t_graphics *)malloc(sizeof(t_graphics));
 	if (!game->graphics)
 	{
-		free_char_tab(game->map->map);
-		free(game->map);
-		free(game);
+		cleanup_error(game, 1);
 		return (NULL);
 	}
 	init_graphics_struct(game->graphics);
 	if (!graphics_init(game->graphics, game->map))
 	{
-		free_char_tab(game->map->map);
-		free(game->map);
-		free(game->graphics);
-		free(game);
+		game->graphics = NULL;
+		cleanup_error(game, 2);
 		return (NULL);
 	}
-	game->player.moves = 0;
-	game->is_exit_reached = 0;
-	find_player_position(game);
-	count_collectibles(game);
+	init_game_state(game);
 	return (game);
 }

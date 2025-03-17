@@ -41,4 +41,7 @@ int				load_textures(t_graphics *graphics);
 // Nettoyage des ressources graphiques
 void			graphics_destroy(t_graphics *graphics);
 
+// Autre
+void			init_game_state(t_game *game);
+
 #endif

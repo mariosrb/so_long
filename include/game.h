@@ -12,5 +12,7 @@ typedef struct s_game
 }				t_game;
 
 t_game			*init_game(char *map_path);
+void			count_collectibles(t_game *game);
+void			find_player_position(t_game *game);
 
 #endif

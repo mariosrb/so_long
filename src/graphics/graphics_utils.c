@@ -6,7 +6,7 @@
 /*   By: mdodevsk <mdodevsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:10:24 by mario             #+#    #+#             */
-/*   Updated: 2025/03/05 18:09:07 by mdodevsk         ###   ########.fr       */
+/*   Updated: 2025/03/17 11:37:23 by mdodevsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,12 @@ void	graphics_destroy(t_graphics *graphics)
 		graphics->mlx = NULL;
 	}
 	free(graphics);
+}
+
+void	init_game_state(t_game *game)
+{
+	game->player.moves = 0;
+	game->is_exit_reached = 0;
+	find_player_position(game);
+	count_collectibles(game);
 }
